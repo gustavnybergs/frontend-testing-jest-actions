@@ -32,13 +32,13 @@ describe("CustomButton", () => {
     expect(button).toHaveClass(ButtonState.clicked);
   });
   
-  // Detta test kommer att misslyckas första gången (för GitHub Actions demo)
-  test("has the wrong class name on click", () => {
-    const { getByRole } = render(<CustomButton buttonText="Test" />);
-    const button = getByRole("button");
-    
-    fireEvent.click(button);
-    // Avsiktligt fel för att demonstrera CI/CD
-    expect(button).toHaveClass("clicked_wrong");
-  });
+  // Detta test är nu fixat för att fungera korrekt
+test("has the correct class name on click", () => {
+  const { getByRole } = render(<CustomButton buttonText="Test" />);
+  const button = getByRole("button");
+  
+  fireEvent.click(button);
+  // Korrigerad förväntan som matchar det faktiska klassnamnet
+  expect(button).toHaveClass(ButtonState.clicked);
+});
 });
